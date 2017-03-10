@@ -12,6 +12,7 @@ SLIDER.prototype.getDimensions = function(){
     this.imageWidth = this.area[0];
     Array.prototype.forEach.call(this.images, function(item){
         item.style.width = this.imageWidth+"px";
+        item.style.opacity = 1;
     }.bind(this));
     this.container.style.width = (this.container.offsetWidth*this.images.length)+"px";
     this.counter = 0;
