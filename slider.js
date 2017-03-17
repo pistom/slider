@@ -1,9 +1,10 @@
 SLIDER = function(obj){
     this.obj = obj;
-    this.container = obj.getElementsByClassName("home__sliderContainer")[0];
-    this.images = obj.getElementsByClassName("home__sliderItem");
+    this.sliderName = obj.sliderName;
+    this.container = obj.getElementsByClassName(this.sliderName+"Container")[0];
+    this.images = obj.getElementsByClassName(this.sliderName+"Item");
     this.getDimensions();
-    this.navigation = obj.getElementsByClassName("home__sliderNavigation")[0];
+    this.navigation = obj.getElementsByClassName(this.sliderName+"Navigation")[0];
     this.navigation.addEventListener("click",this.slide.bind(this),false);
     window.addEventListener("resize",this.getDimensions.bind(this),false);
 };
@@ -45,11 +46,10 @@ SLIDER.prototype.slide = function(e){
     }
 };
 
-Object.prototype.SLIDER = function(config) {
+Object.prototype.SLIDER = function(sliderName) {
+    this.sliderName = sliderName;
     this.s = new SLIDER(this);
 };
 
-document.getElementsByClassName("home__slider")[0].SLIDER();
-
-
-
+if(document.getElementsByClassName("home__slider")[0])
+    document.getElementsByClassName("home__slider")[0].SLIDER("home__slider");
